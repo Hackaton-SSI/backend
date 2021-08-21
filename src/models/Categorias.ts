@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import Entidade from './Entidade'
 
 @Entity('categoria')
 export default class Categoria {
@@ -13,4 +14,7 @@ export default class Categoria {
 
   @Column()
   imagem: string
+
+  @ManyToMany(type => Entidade, entidade => entidade.categorias)
+  entidades: Entidade[]
 }

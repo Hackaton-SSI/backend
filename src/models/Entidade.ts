@@ -1,4 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm'
+import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from 'typeorm'
+
+import Categoria from './Categorias'
 
 @Entity('entidades')
 export default class Entidade {
@@ -29,8 +31,9 @@ export default class Entidade {
   @Column()
   mantenedor: string
 
-  @Column("varchar", {array: true})
-  categorias: string[]
+  @ManyToMany(type => Categoria, categoria => categoria.entidades)
+  @JoinTable()
+  categorias: Categoria[]
 
   @Column()
   isPessoa: boolean
