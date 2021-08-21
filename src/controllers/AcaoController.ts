@@ -10,5 +10,20 @@ export default {
     const acoes = await categoriaRepostory.find();
 
     return res.json(acoes)
+  },
+
+  async create(req: Request, res: Response) {
+    const { nome, endereco, descricao, data } = req.body
+    
+    const acaoRepository = getRepository(Acao)
+
+    const acaoData = {nome, endereco, descricao, data}
+
+    const acao = acaoRepository.create(acaoData)
+
+    await acaoRepository.save(acao)
+
+    return res.status(201).json(acao)
+
   }
 }

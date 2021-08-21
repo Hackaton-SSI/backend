@@ -1,9 +1,11 @@
 import { 
   Column, 
+  CreateDateColumn, 
   Entity, 
   JoinTable, 
   ManyToMany, 
-  PrimaryGeneratedColumn 
+  PrimaryGeneratedColumn, 
+  UpdateDateColumn
 } from 'typeorm'
 
 import Categorias from './Categorias'
@@ -21,21 +23,15 @@ export default class Acao {
   endereco: string
 
   @Column()
-  latitude: number
-
-  @Column()
-  longitude: number
-
-  @Column()
   descricao: string
 
   @Column()
   data: Date
 
-  @Column()
+  @CreateDateColumn()
   createdAt: Date
 
-  @Column()
+  @UpdateDateColumn()
   updatedAt: Date
 
   @ManyToMany(type => Categorias, categoria => categoria.acoes)
