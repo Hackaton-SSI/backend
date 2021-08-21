@@ -7,6 +7,7 @@ import {
 } from 'typeorm'
 
 import Categorias from './Categorias'
+import Usuario from './Usuarios'
 
 @Entity('acao')
 export default class Acao {
@@ -40,4 +41,7 @@ export default class Acao {
   @ManyToMany(type => Categorias, categoria => categoria.acoes)
   @JoinTable()
   categorias: Categorias[]
+
+  @ManyToMany(type => Usuario, usuarios => usuarios.acoesFavoritas)
+  favoritados: Usuario[]
 }

@@ -14,11 +14,20 @@ export default class Entidade {
   endereco: string
 
   @Column()
-  latitude: number
+  cep: number
 
   @Column()
-  longitude: number
+  estado: string
 
+  @Column()
+  cidade: string
+
+  @Column()
+  numeroCasa: string
+
+  @Column()
+  complemento: string
+  
   @Column()
   descricao: string
   

@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import Acao from './Acao'
 
 @Entity('usuario')
 export default class Usuario {
@@ -27,14 +28,12 @@ export default class Usuario {
   numeroCasa: string
 
   @Column()
-  latitude: number
-
-  @Column()
-  longitude: number
-
-  @Column()
   complemento: string
 
   @Column()
   imagem: string
+
+  @ManyToMany(type => Acao, acoes => acoes.favoritados)
+  @JoinTable()
+  acoesFavoritas: Acao[]
 }
