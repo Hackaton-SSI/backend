@@ -1,7 +1,3 @@
-import * as dotenv from "dotenv"
-
-dotenv.config()
-
 export default {
   "type": "postgres",
   "host": process.env.DB_HOST || "ec2-3-217-68-126.compute-1.amazonaws.com",
