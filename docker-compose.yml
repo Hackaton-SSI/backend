@@ -7,6 +7,8 @@ services:
     environment:
       POSTGRES_PASSWORD: "123456789"
       POSTGRES_DB: "hackaton"
+    ports:
+      - 5432:5432
     networks:
       - net_hackaton
 

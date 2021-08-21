@@ -5,6 +5,8 @@ import * as dotenv from 'dotenv'
 
 import routes from './routes'
 
+import './database/conexao'
+
 dotenv.config()
 
 const app = express()
