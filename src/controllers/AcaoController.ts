@@ -24,6 +24,14 @@ export default {
     await acaoRepository.save(acao)
 
     return res.status(201).json(acao)
+  },
 
+  async show(req: Request, res: Response) {
+    const { id } = req.params
+
+    const acaoRepository = getRepository(Acao)
+    const acao = await acaoRepository.findOneOrFail(id)
+
+    return res.json(acao)
   }
 }

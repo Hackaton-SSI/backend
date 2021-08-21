@@ -10,5 +10,41 @@ export default {
     const entidade = await entidadeRepository.find()
 
     return res.json(entidade);
+  },
+
+  async create(req: Request, res: Response) {
+    const {
+      nome,
+      endereco,
+      cep,
+      estado,
+      cidade,
+      numeroCasa,
+      complemento,
+      descricao,
+      emails,
+      telefones,
+      mantenedor
+    } = req.body
+    const entidadeRepository = getRepository(Entidade)
+
+    const data = {
+      nome,
+      endereco,
+      cep,
+      estado,
+      cidade,
+      numeroCasa,
+      complemento,
+      descricao,
+      emails,
+      telefones,
+      mantenedor
+    }
+
+    const entidade = entidadeRepository.create(data)
+    await entidadeRepository.save(entidade)
+
+    return res.status(201).json(entidade)
   }
 }

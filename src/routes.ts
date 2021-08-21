@@ -6,6 +6,7 @@ import Entidade from './controllers/EntidadeController'
 import Categoria from './controllers/CategoriaController'
 import Usuario from './controllers/UsuarioController'
 import Acao from './controllers/AcaoController'
+import Favorito from './controllers/FavoritoController'
 
 routes.get('/', (req, res) => {
   return res.json({mensagem: "Bem vindo a API"})
@@ -13,6 +14,7 @@ routes.get('/', (req, res) => {
 
 // Rotas de entidade
 routes.get('/entidades', Entidade.index);
+routes.post('/entidade', Entidade.create)
 
 
 // Rotas de categorias
@@ -26,5 +28,10 @@ routes.get('/usuario/:id', Usuario.show)
 
 // Rotas de Ação
 routes.post('/acao', Acao.create)
+routes.get('/acao/:id', Acao.show)
+
+// Rotas de favoritos
+routes.post('/favoritoAcao', Favorito.favoritoAcao)
+routes.post('/favoritoEntidade', Favorito.favoritoEntidade)
 
 export default routes

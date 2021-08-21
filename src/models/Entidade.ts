@@ -1,6 +1,7 @@
 import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from 'typeorm'
 
 import Categoria from './Categorias'
+import Usuario from './Usuarios'
 
 @Entity('entidades')
 export default class Entidade {
@@ -44,6 +45,6 @@ export default class Entidade {
   @JoinTable()
   categorias: Categoria[]
 
-  @Column()
-  isPessoa: boolean
+  @ManyToMany(type => Usuario, usuario => usuario.entidadesFavoritas)
+  favoritos: Usuario[]
 }

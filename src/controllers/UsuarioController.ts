@@ -39,7 +39,12 @@ export default {
   async show(req: Request, res: Response){
     const { id } = req.params
     const usuariosRepository = getRepository(Usuario)
-    const usuario = await usuariosRepository.findOneOrFail(id)
+    const usuario = await usuariosRepository.findOneOrFail(id, {
+      relations: [
+        "acoesFavoritas",
+        "entidadesFavoritas"
+      ]
+    })
 
     
 
