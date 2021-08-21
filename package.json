@@ -5,6 +5,7 @@
   "repository": "https://github.com/Hackaton-SSI/backend.git",
   "author": "Vinicius Rosa <viniciushcrosa@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
