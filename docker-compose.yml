@@ -1,17 +1,16 @@
 version: "3.1"
 
 services:
-  db:
+  backend:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: "123456789"
-      POSTGRES_DB: "hackaton"
+      DB_HOST: ""
+      DB_USER: ""
+      DB_PASS: ""
+      DB_DATABASE: ""
+    command: npm run dev
     ports:
-      - 5432:5432
-    networks:
-      - net_hackaton
-
-networks:
-  net_hackaton:
-    driver: bridge
+      - 3333:3333
+    volumes:
+      - .:/usr/app
