@@ -1,4 +1,7 @@
 import { createConnection } from "typeorm"
+import * as dotenv from "dotenv"
+
+dotenv.config()
 
 createConnection({
   type: "postgres",
@@ -18,6 +21,4 @@ createConnection({
       rejectUnauthorized: false
     }
   }
-}).then(() => {
-  console.log('🎲 Connexão feita')
-})
+}).then(() => console.log("🎲 Conectado ao banco de dados"))
