@@ -3,7 +3,7 @@ import * as dotenv from "dotenv"
 
 dotenv.config()
 
-const connection = createConnection({
+createConnection({
   type: "postgres",
   host: process.env.DB_HOST || "localhost",
   port: 5432,
