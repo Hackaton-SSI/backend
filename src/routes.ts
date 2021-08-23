@@ -13,14 +13,16 @@ routes.get('/', (req, res) => {
 })
 
 // Rotas de entidade
-routes.get('/entidades', Entidade.index);
+routes.get('/entidades', Entidade.index)
 routes.post('/entidade', Entidade.create)
+routes.get('/entidades/:nome', Entidade.showByName)
 
 
 // Rotas de categorias
 routes.get('/categorias', Categoria.index)
 routes.post('/categoria', Categoria.create)
 routes.get('/categorias/:palavra', Categoria.show)
+routes.get('/categoria/entidade', Categoria.findEntidadeByCategoria)
 
 // Rotas de Usuario
 routes.post('/usuario', Usuario.create)

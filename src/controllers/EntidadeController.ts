@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
-import { getRepository } from 'typeorm'
+import { getRepository, Like } from 'typeorm'
 
 import Entidade from '../models/Entidade'
+import Categoria from '../models/Categorias'
 
 export default {
   async index(req: Request, res: Response){
@@ -46,5 +47,17 @@ export default {
     await entidadeRepository.save(entidade)
 
     return res.status(201).json(entidade)
+  },
+
+  async showByName(req: Request, res: Response) {
+    const { nome } = req.params
+console.log(nome)
+    const entidadeRepository = getRepository(Entidade)
+
+    const entidades = await entidadeRepository.find({
+      nome: Like(`%${nome}%`)
+    })
+
+    return res.json(entidades)
   }
 }
